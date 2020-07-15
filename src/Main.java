@@ -6,76 +6,34 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		//Print available times
-		//first, ask the user if they are new or not, if they are, have them input their info
-		//if not then move on to the next step, and ask "would you like to set your available times?"
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Are you a new user? (y/n)");
 		String tf = scanner.next().toLowerCase();
-		if(tf.equals('y')) {
-			
+		
+		
+		//have the program ask for the users username if they are not a new user, and find that username in the db
+		//then, ask for the password and check if that matches the value in the db
+		//if neither work, throw an error message using try/catch
+		Player input = new Player();
+		
+		if(tf.equals("y")) {			
+			input.playerInfo();
 		}
 		
+		DateTime input2 = new DateTime();
 		
-		DateTime input = new DateTime();		
-		System.out.println("Enter a date (dd/mm/yyyy): ");
-		String date = scanner.next();		
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		
-		Boolean j = true;
-		try {
-		    dateFormat.parse(date);
-		}
-		catch (ParseException e) {
-		    System.err.println("Invalid input");
-		    j = false;
-		}
-				
-		if(j) {
-			SimpleDateFormat datetimeFormat = new SimpleDateFormat("dd/MM/yyyyh:mm");
-			
-			System.out.println("Enter a start time:");
-			String starttime = date+scanner.next();
-			
-			Date startdatetime = null;
-			
-			try {
-				startdatetime = datetimeFormat.parse(starttime);
-			}
-			catch (ParseException e) {		
-				System.out.println("Incorrect time format");
-				j = false;
-			}
-			
-			input.setStartTime(startdatetime);
-			
-			if(j) {
-				System.out.println("Enter an end time:");
-				String endtime = date+scanner.next();
-			
-				
-				Date enddatetime = null;
-				
-				try {
-					enddatetime = datetimeFormat.parse(endtime);
-				}
-				catch (ParseException e) {		
-					System.out.println("Incorrect time format");
-					j=false;
-				}
-				input.setEndTime(enddatetime);
-			}
-		
-		System.out.println("The start time is "+input.starttime);
-		System.out.println("The end time is "+input.endtime);
-		}
-		
+		System.out.println("Would you like to set your available times? (y/n)");
+		String ans = scanner.next().toLowerCase();
+		if(ans.equals("y")) {
+			input2.setTime();
+			System.out.println("The start time is "+input2.getEndTime());
+			System.out.println("The end time is "+input2.getEndTime());
+		}		
 		else {
-			System.out.println("Error");
+			System.out.println("Fin.");
 		}
-		
+				
 		scanner.close();		
 		}
 		
