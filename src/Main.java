@@ -34,9 +34,7 @@ public class Main {
 			System.out.println("Fin.");
 		}
 		
-		MySQLConnection input3 = new MySQLConnection();
-		
-		input3.petInfo();
+		input.inputPlayerInfo(input.getId(), input.getName(), input.getSkill(), input.getCity());
 				
 		scanner.close();		
 		}
