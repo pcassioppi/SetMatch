@@ -1,3 +1,5 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Scanner;
 
 public class Player {
@@ -6,16 +8,6 @@ public class Player {
 	String name;
 	int skill;
 	String city;
-	
-//	public void setPlayerInfo(int id, String name, int skill, String city){
-//		//Scanner scanner = new Scanner(System.in);
-//		this.id=id;	
-//		//System.out.println("Enter your name: ");
-//		//this.name = scanner.next();
-//		this.name = name;
-//		this.skill = skill;	
-//		this.city = city;			
-//	}
 	
 	public void playerInfo(){
 		Scanner scanner = new Scanner(System.in);
@@ -50,7 +42,10 @@ public class Player {
 		
 		this.skill = slevel;
 		int id=1;
-
+		
+		//MySQLConnection db = new MySQLConnection();
+		
+		
 		
 		System.out.println("User:  "+name);
 		System.out.println("City:  "+city);
@@ -59,6 +54,17 @@ public class Player {
 		id++;
 		
 	}
+	
+	Connection conn = null;
+
+	public Connection RetrieveConnection() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn=DriverManager.getConnection("jdbc:mysql://setmatchdb.cqkvg3uj1j8v.us-east-2.rds.amazonaws.com/user","admin","pcsetmatch");		
+		}catch(Exception e) {System.out.println(e);}
+		return conn;
+		}
+	
 	
 	
 	}

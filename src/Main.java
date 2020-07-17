@@ -33,6 +33,10 @@ public class Main {
 		else {
 			System.out.println("Fin.");
 		}
+		
+		MySQLConnection input3 = new MySQLConnection();
+		
+		input3.petInfo();
 				
 		scanner.close();		
 		}
