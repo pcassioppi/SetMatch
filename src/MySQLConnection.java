@@ -12,32 +12,4 @@ public class MySQLConnection {
 		}catch(Exception e) {System.out.println(e);}
 		return conn;
 		}
-	
-	
-	//Here, we can create
-	
-	public void petInfo() {
-		if(conn==null) {
-			conn= RetrieveConnection();
-		}
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.println("Enter your pets name: ");
-		String ans1 = scanner.next();
-		
-		System.out.println("Enter your pets species: ");
-		String ans2 = scanner.next();
-		
-		try {
-		String query = "insert into pet (name, species)"+" values (?,?)";
-		
-		PreparedStatement preparedStmt = conn.prepareStatement(query);
-	    preparedStmt.setString (1, ans1);
-	    preparedStmt.setString (2, ans2);
-	    
-	    preparedStmt.execute();
-	    conn.close();
-		}
-		catch(Exception e) {System.out.println(e);}
-	}
 }
